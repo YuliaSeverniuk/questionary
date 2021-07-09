@@ -1,0 +1,16 @@
+<button mat-raised-button routerLink="/question-management">To manage page</button>
+<div class="questions-list">
+  <div>
+    <h4>Unanswered questions</h4>
+    <app-question *ngFor="let question of unansweredQuestionsList"
+                  [question]="question">
+    </app-question>
+  </div>
+  <div>
+    <h4>Answered questions</h4>
+    <app-question *ngFor="let question of answeredQuestionsList"
+                  [question]="question">
+    </app-question>
+  </div>
+
+</div>

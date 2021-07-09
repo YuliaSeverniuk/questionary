@@ -1,0 +1,25 @@
+button {
+  margin-bottom: 10px;
+}
+
+mat-card {
+  margin: 0 0 10px;
+  box-shadow: 2px 5px 16px 0 #e3e3e3 !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .buttons {
+    button {
+      margin: 0 10px;
+    }
+  }
+
+  .question-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+}
+

@@ -1,0 +1,59 @@
+mat-card {
+  text-align: left;
+  margin: 0 0 10px;
+  box-shadow: 2px 5px 16px 0 #e3e3e3 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .form-control {
+    margin: 10px;
+    display: flex;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buttons {
+    button {
+      margin: 0 10px;
+    }
+  }
+
+  .question-info {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.example-section {
+  margin: 12px 0;
+}
+
+.example-margin {
+  margin: 0 12px;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 4px;
+}
+
+mat-radio-group {
+  display: flex;
+  flex-direction: column;
+
+  mat-radio-button {
+    margin-bottom: 10px;
+  }
+}
+
+.error {
+  color: red;
+}
+
+h5, p {
+  margin: 5px;
+}

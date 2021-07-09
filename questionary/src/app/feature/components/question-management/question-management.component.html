@@ -1,0 +1,15 @@
+<h4>Question management page</h4>
+<button mat-raised-button routerLink="/create-question">Add new question</button>
+<button mat-raised-button routerLink="/lists-of-questions">To questions List</button>
+
+<mat-card *ngFor="let question of questionsList$ | async">
+  <span class="question-info">
+    <span>Question: {{question.question}}</span>
+    <span>Type of question: {{question.type.name}}</span>
+    <span>Date: {{question.date | date: 'medium'}}</span>
+  </span>
+  <span class="buttons">
+    <button mat-button (click)="editQuestion(question)">Edit</button>
+    <button mat-button color="warn" (click)="deleteQuestion(question.date)">Delete</button>
+  </span>
+</mat-card>

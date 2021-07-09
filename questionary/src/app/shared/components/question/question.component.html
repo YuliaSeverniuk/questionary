@@ -1,0 +1,45 @@
+<mat-card>
+
+  <div *ngIf="!question.questionAnswered">
+    <span class="question-info">
+      <span>Question: {{question.question}}</span>
+      <span>Date: {{question.date | date: 'medium'}}</span>
+    </span>
+    <form [formGroup]="form" *ngIf="question.type.value === 'multiple_choice'">
+      <section formArrayName="multiple_choice" class="example-section">
+        <mat-checkbox *ngFor="let answer of multiAnswers.controls; index as i" [formControlName]="i"
+                      class="example-margin">{{question.answers[i]}}</mat-checkbox>
+      </section>
+      <p class="error" *ngIf="multipleChoiceError">At least one option should chosen</p>
+    </form>
+    <form [formGroup]="form" class="form-control" *ngIf="question.type.value === 'open_question'">
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Answer</mat-label>
+        <input formControlName="open_question" matInput type="text">
+      </mat-form-field>
+    </form>
+    <form [formGroup]="form" *ngIf="question.type.value === 'single_choice'">
+      <mat-radio-group formControlName="single_choice"
+                       aria-labelledby="example-radio-group-label"
+                       class="example-radio-group">
+        <mat-radio-button class="example-radio-button" *ngFor="let ans of question.answers" [value]="ans">
+          {{ans}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </form>
+    <span class="buttons">
+      <button [disabled]="form.get(question.type.value).invalid" mat-raised-button (click)="addAnswer()">Add answer</button>
+    </span>
+  </div>
+  <div *ngIf="question.questionAnswered">
+    <span class="question-info">
+      <span>Question: {{question.question}}</span>
+      <span>Added answer date: {{question.answerDate | date: 'medium'}}</span>
+    </span>
+    <h5>Answers:</h5>
+    <p *ngFor="let ans of question.addedAnswer">{{ans}}</p>
+    <span class="buttons">
+      <button mat-raised-button (click)="changeAnswer()">Change answer</button>
+    </span>
+  </div>
+</mat-card>

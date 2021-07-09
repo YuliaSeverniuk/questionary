@@ -1,0 +1,32 @@
+<h4>{{ edit ? 'Edit question' : 'Create new question'}}</h4>
+<button mat-raised-button (click)="return()">Back</button>
+<form [formGroup]="form">
+  <div class="form-control">
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Question</mat-label>
+      <input matInput type="text" formControlName="question">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <label id="example-radio-group-label">Pick a question type</label>
+    <mat-radio-group [disabled]="edit"
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      formControlName="type">
+      <mat-radio-button class="example-radio-button" *ngFor="let type of types" [value]="type.value">
+        {{type.name}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="form-array" formArrayName="answers">
+    <mat-form-field *ngFor="let answer of answers.controls; index as i" class="example-form-field" appearance="fill">
+      <mat-label>Answer</mat-label>
+      <input matInput type="text" [formControlName]="i">
+    </mat-form-field>
+    <button *ngIf="form.get('type').value !== 'open_question'" mat-button (click)="addControl()">Add Answer</button>
+  </div>
+  <button [disabled]="form.invalid" mat-button (click)="createQuestion()">{{ edit ? 'Save Question' : 'Create question' }}</button>
+</form>
+
